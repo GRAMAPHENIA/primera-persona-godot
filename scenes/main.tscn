@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=4 uid="uid://345ckewyatoy"]
+
+[ext_resource type="PackedScene" uid="uid://cueesxhym42f6" path="res://scenes/Player.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://ca64y4c4f4qv6" path="res://scenes/interactable.gd" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c3e21ab515qsf" path="res://assets/models_blender_fang/lampCube.glb" id="2_sugp2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mqy1"]
+sky_top_color = Color(0.305943, 0.182283, 0.207382, 1)
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0.486778, 0.308223, 0.163997, 1)
+ground_horizon_color = Color(0.878176, 0.794383, 0.702245, 1)
+
+[sub_resource type="Sky" id="Sky_r0udw"]
+sky_material = SubResource("ProceduralSkyMaterial_2mqy1")
+
+[sub_resource type="Environment" id="Environment_lg7os"]
+background_mode = 2
+background_color = Color(0.3943, 0.372535, 0.32476, 1)
+sky = SubResource("Sky_r0udw")
+ambient_light_source = 2
+ambient_light_color = Color(0.17308, 0.424382, 0.618888, 1)
+ambient_light_sky_contribution = 0.64
+ambient_light_energy = 0.05
+tonemap_mode = 4
+ssao_radius = 4.03
+ssao_intensity = 2.46
+ssil_radius = 0.01
+glow_levels/2 = 1.0
+glow_levels/4 = 0.5
+glow_levels/5 = 0.2
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.237957, 0.332611, 0.420758, 1)
+fog_light_energy = 2.84
+fog_density = 0.0445
+fog_sky_affect = 0.816
+volumetric_fog_density = 0.07
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v46qu"]
+size = Vector3(100, 1.01, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xfchp"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2mqy1"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAL8AAAC/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAAA/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAA/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAL8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAD8AAAC/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAC/AAAAPwAAAL8AAAC/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfchp"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lg7os")
+
+[node name="Player" parent="." instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -19.4, 0, 17.6081)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Level"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_v46qu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Floor"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_xfchp")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="SETS" type="Node3D" parent="."]
+
+[node name="set-cero-uno" type="Node3D" parent="SETS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638089, 0.5, -5.9)
+
+[node name="Interactable" type="MeshInstance3D" parent="SETS/set-cero-uno"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9389, 0, 18)
+mesh = SubResource("ArrayMesh_2mqy1")
+skeleton = NodePath("../../..")
+script = ExtResource("2_jyhfs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SETS/set-cero-uno/Interactable"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SETS/set-cero-uno/Interactable/StaticBody3D"]
+shape = SubResource("BoxShape3D_xfchp")
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="SETS/set-cero-uno"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9008, 2.6, 18)
+light_color = Color(0.386688, 0.596109, 0.801037, 1)
+light_size = 0.74
+shadow_enabled = true
+omni_range = 9.481
+omni_attenuation = 2.0
+
+[node name="lampCube" parent="SETS/set-cero-uno" instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8619, 2.6, 18)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractionPanel" type="Panel" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -98.1025
+offset_right = 200.0
+offset_bottom = 98.1025
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InteractionLabel" type="Label" parent="HUD/InteractionPanel"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 80.1025
+offset_right = 199.0
+offset_bottom = 103.103
+horizontal_alignment = 1
+vertical_alignment = 1
