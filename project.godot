@@ -14,7 +14,7 @@ config/name="PRIMERA PERSONA"
 config/description="Esta es la primer version de una aplicacion para el descubrimientos de datos."
 config/version="0.0.1"
 run/main_scene="uid://345ckewyatoy"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 
 [display]
 
