@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://x3yyuiu2kuto"]
+
+[ext_resource type="Script" uid="uid://goff1qa6bsd7" path="res://Interact/interactable.gd" id="1_nhor4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lwy4x"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhor4"]
+height = 0.38269043
+
+[node name="Button" type="StaticBody3D"]
+script = ExtResource("1_nhor4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.19175267, 0, 0, 0, 1, 0, 0.19107878, 0)
+mesh = SubResource("CylinderMesh_lwy4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20822966, 0)
+shape = SubResource("CylinderShape3D_nhor4")
