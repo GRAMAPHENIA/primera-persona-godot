@@ -1,13 +1,14 @@
 extends CharacterBody3D
 
-const MAX_SPEED = 5.0
-const ACCEL = 10.0
-const FRICTION = 8.0
-const JUMP_VELOCITY = 4.5
-const CAMERA_LIMIT = 89.0
+# --- Movimiento ---
+@export var max_speed: float = 4.0
+@export var accel: float = 10.0
+@export var friction: float = 8.0
+@export var jump_velocity: float = 4.5
+@export var camera_limit: float = 89.0
 
+# --- Cámara ---
 @onready var camera_pivot: Node3D = $cameraPivot
-
 @export var mouse_sensitivity: float = 0.002
 
 # --- Head Bobbing ---
@@ -32,7 +33,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation_y -= event.relative.x * mouse_sensitivity
 		rotation_x -= event.relative.y * mouse_sensitivity
-		rotation_x = clamp(rotation_x, deg_to_rad(-CAMERA_LIMIT), deg_to_rad(CAMERA_LIMIT))
+		rotation_x = clamp(rotation_x, deg_to_rad(-camera_limit), deg_to_rad(camera_limit))
 
 func _physics_process(delta: float) -> void:
 	# --- rotación inmediata ---
@@ -44,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -52,10 +53,10 @@ func _physics_process(delta: float) -> void:
 	var hvel = velocity
 	hvel.y = 0
 
-	var target = direction * MAX_SPEED
-	var accel = ACCEL if direction != Vector3.ZERO else FRICTION
+	var target = direction * max_speed
+	var applied_accel = accel if direction != Vector3.ZERO else friction
 
-	hvel = hvel.lerp(target, accel * delta)
+	hvel = hvel.lerp(target, applied_accel * delta)
 	velocity.x = hvel.x
 	velocity.z = hvel.z
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://345ckewyatoy"]
+[gd_scene load_steps=9 format=3 uid="uid://345ckewyatoy"]
 
 [ext_resource type="PackedScene" uid="uid://cueesxhym42f6" path="res://scenes/Player.tscn" id="1_0wfyh"]
-[ext_resource type="Script" uid="uid://ca64y4c4f4qv6" path="res://scenes/interactable.gd" id="2_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://c3e21ab515qsf" path="res://assets/models_blender_fang/lampCube.glb" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dypj7vay7lb4f" path="res://scenes/puerta_simple.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://x3yyuiu2kuto" path="res://Button.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mqy1"]
@@ -42,19 +41,6 @@ size = Vector3(100, 1.01, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xfchp"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2mqy1"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
-"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
-"format": 34359738391,
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAL8AAAC/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAAA/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAA/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAL8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAC/AAAAPwAAAD8AAAC/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAC/AAAAPwAAAL8AAAC/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
-}]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xfchp"]
-
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -64,7 +50,12 @@ environment = SubResource("Environment_lg7os")
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, -19.4, 0, 17.6081)
 
 [node name="Button" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.460936, -0.0131819695, 14.689171)
+prompt_message = "Zanahoria"
+
+[node name="Button2" parent="." instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.357705, -0.0131819695, 14.689171)
+prompt_message = "sobras"
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -81,30 +72,21 @@ skeleton = NodePath("../CollisionShape3D")
 
 [node name="SETS" type="Node3D" parent="."]
 
-[node name="set-cero-uno" type="Node3D" parent="SETS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638089, 0.5, -5.9)
-
-[node name="Interactable" type="MeshInstance3D" parent="SETS/set-cero-uno"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9389, 0, 18)
-mesh = SubResource("ArrayMesh_2mqy1")
-skeleton = NodePath("../../..")
-script = ExtResource("2_jyhfs")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SETS/set-cero-uno/Interactable"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SETS/set-cero-uno/Interactable/StaticBody3D"]
-shape = SubResource("BoxShape3D_xfchp")
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="SETS/set-cero-uno"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9008, 2.6, 18)
+[node name="OmniLight3D5" type="OmniLight3D" parent="SETS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.538889, 3.1, 12.1)
 light_color = Color(0.386688, 0.596109, 0.801037, 1)
 light_size = 0.74
 shadow_enabled = true
 omni_range = 9.481
 omni_attenuation = 2.0
 
-[node name="lampCube" parent="SETS/set-cero-uno" instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8619, 2.6, 18)
+[node name="OmniLight3D6" type="OmniLight3D" parent="SETS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.398361, 3.1, 13.76115)
+light_color = Color(0.386688, 0.596109, 0.801037, 1)
+light_size = 0.74
+shadow_enabled = true
+omni_range = 9.481
+omni_attenuation = 2.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -143,3 +125,6 @@ offset_right = 199.0
 offset_bottom = 103.103
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="puerta-simple" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18.745499, 0.0050001144, 11.583629)
